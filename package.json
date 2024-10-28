@@ -5,9 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node build",
-    "build": "tsc && prisma generate",
+    "build": "prisma generate",
     "dev": "tsc-watch --onSuccess \"npm start\" ",
-    "vercel-build": "tsc && prisma generate"
+    "vercel-build": "primsa generate"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
