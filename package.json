@@ -7,7 +7,7 @@
     "start": "node build",
     "build": "prisma generate",
     "dev": "tsc-watch --onSuccess \"npm start\" ",
-    "vercel-build": "primsa generate"
+    "vercel-build": "prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
