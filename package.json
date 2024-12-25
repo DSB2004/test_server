@@ -11,12 +11,8 @@
   "scripts": {
     "start": "node -r tsconfig-paths/register build",
     "dev": "tsc-watch --onSuccess \"node -r tsconfig-paths/register build\"",
-    "build": "tsc && prisma generate",
-    "vercel-build": "tsc && prisma generate",
-    "prisma-generate": "prisma generate",
-    "prisma-migrate": "prisma migrate dev --name update",
-    "prisma-deploy": "prisma migrate deploy",
-    "prisma-update": "yarn prisma-generate && yarn prisma-migrate && yarn prisma-deploy"
+    "build": "tsc -p",
+    "vercel-build": "prisma generate"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
