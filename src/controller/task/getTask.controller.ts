@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 import prisma from "../../lib/prisma";
 
 
-const GetTask = async (request: Request, response: Response) => {
+const GetTask = async (request: Request, response: Response): Promise<any> => {
     try {
 
         const { id } = request.query;

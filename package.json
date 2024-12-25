@@ -3,41 +3,46 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
-  "scripts": {
-    "start": "node build",
-    "build": "prisma generate",
-    "dev": "tsc-watch --onSuccess \"npm start\" ",
-    "vercel-build": "prisma generate"
-  },
   "prisma": {
     "seed": "node prisma/seed.js"
   },
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "start": "node -r tsconfig-paths/register build",
+    "dev": "tsc-watch --onSuccess \"node -r tsconfig-paths/register build\"",
+    "build": "tsc && prisma generate",
+    "vercel-build": "tsc && prisma generate && prisma migrate deploy",
+    "prisma-generate": "prisma generate",
+    "prisma-migrate": "prisma migrate dev --name update",
+    "prisma-deploy": "prisma migrate deploy",
+    "prisma-update": "yarn prisma-generate && yarn prisma-migrate && yarn prisma-deploy"
+  },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/dompurify": "^3.0.5",
-    "@types/express": "^4.17.21",
-    "@types/jsdom": "^21.1.6",
-    "@types/jsonwebtoken": "^9.0.6",
-    "prisma": "^5.21.1",
-    "tsc-node": "^0.0.3",
-    "tsc-watch": "^6.2.0",
-    "typescript": "^5.4.5"
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/uuid": "^10.0.0",
+    "prisma": "^6.1.0",
+    "tsc": "^2.0.4",
+    "tsc-watch": "^6.2.1",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.21.1",
-    "@types/cors": "^2.8.17",
-    "@types/dotenv": "^8.2.0",
-    "@types/mysql": "^2.15.26",
+    "@prisma/client": "^6.1.0",
     "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dompurify": "^3.1.2",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "jsdom": "^24.0.0",
-    "jsonwebtoken": "^9.0.2",
-    "mysql": "^2.18.1",
-    "zod": "^3.23.8"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ioredis": "^5.4.2",
+    "jose": "^5.9.6",
+    "module-alias": "^2.2.3",
+    "otplib": "^12.0.1",
+    "tsconfig-paths": "^4.2.0",
+    "uuid": "^11.0.3",
+    "zod": "^3.24.1"
   }
 }

@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 import prisma from "../../lib/prisma";
 import { taskSchema } from "../../lib/zod";
 
-const UpdateTask = async (request: Request, response: Response) => {
+const UpdateTask = async (request: Request, response: Response): Promise<any> => {
     try {
 
         const { title, body, status } = await request.body;

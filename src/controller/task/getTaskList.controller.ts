@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import prisma from "../../lib/prisma";
 
-const GetTaskList = async (request: Request, response: Response) => {
+const GetTaskList = async (request: Request, response: Response): Promise<any> => {
     try {
         const page = Number(request.query['page']) || 1;
         const pageSize = 10;
