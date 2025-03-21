@@ -55,3 +55,11 @@ model profile {
   user   user   @relation(fields: [userId], references: [id])
   userId String @unique
 }
+
+
+
+model dashx_email{
+  id String @id @default(cuid())
+  email String @unique 
+  createdAt DateTime @default(now())
+}
