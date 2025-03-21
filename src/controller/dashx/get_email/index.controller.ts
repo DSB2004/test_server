@@ -1,5 +1,6 @@
 import prisma from "../../../lib/prisma";
 import { Response, Request } from "express";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 export const ADD_EMAIL_CONTROLLER = async (
   req: Request,
@@ -17,7 +18,15 @@ export const ADD_EMAIL_CONTROLLER = async (
     });
 
     return res.status(201).send("Email added");
-  } catch (error) {
+  } catch (error: any) {
+    // Check for duplicate entry error
+    if (
+      error instanceof PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
+      return res.status(400).send("Email already exists");
+    }
+
     console.error("Error adding email:", error);
     return res.status(500).send("Internal Server Error");
   }
