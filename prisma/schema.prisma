@@ -56,10 +56,15 @@ model profile {
   userId String @unique
 }
 
-
-
-model dashx_email{
-  id String @id @default(cuid())
-  email String @unique 
+model dashx_email {
+  id        String   @id @default(cuid())
+  email     String   @unique
   createdAt DateTime @default(now())
+}
+
+model dashx_webhook {
+  id     String @id @default(cuid())
+  data   Json
+  status String
+  
 }

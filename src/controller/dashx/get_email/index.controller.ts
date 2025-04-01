@@ -41,3 +41,20 @@ export const GET_EMAIL = async (req: Request, res: Response): Promise<any> => {
     return res.status(500).send("Internal Server Error");
   }
 };
+
+
+
+
+export const HANDLE_WEBHOOK = async (req: Request, res: Response): Promise<any> => {
+  try {
+
+    const body = req.body;
+
+    console.log("[DASHX WEBHOOK]: ", req.body);
+
+  }
+  catch (err) {
+    console.log("error handling request on webhook")
+
+  }
+}
