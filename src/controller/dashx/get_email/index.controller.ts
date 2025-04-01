@@ -51,6 +51,7 @@ export const HANDLE_WEBHOOK = async (req: Request, res: Response): Promise<any> 
     const body = req.body;
 
     console.log("[DASHX WEBHOOK]: ", req.body);
+    return res.status(200).json({ message:"Message received" });
 
   }
   catch (err) {
